@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nicholas (Nick) Roehm — Researcher &amp; Bartender</title>
+  <meta name="description" content="Portfolio of Nicholas Roehm — Researcher, Bartender, and Government Relations professional based in Washington, D.C." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Variables ───────────────────────────── */
+    :root {
+      --green-dark:   #1B3D28;
+      --green-mid:    #2D5A3F;
+      --gold:         #C9A84C;
+      --gold-light:   #D9BE78;
+      --cream:        #F5EFE0;
+      --cream-dark:   #E8DFC8;
+      --sage:         #7DAA94;
+      --text-dark:    #1E2820;
+      --text-mid:     #4A5240;
+      --text-light:   #7A8A72;
+      --white:        #FAFAF6;
+    }
+
+    /* ── Reset ───────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Raleway', sans-serif;
+      color: var(--text-dark);
+      background: var(--cream);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── Navigation ──────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.85rem 2.5rem;
+      background: rgba(27, 61, 40, 0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+      transition: padding 0.3s ease;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.65rem;
+      text-decoration: none;
+    }
+    .nav-badge { width: 34px; height: 34px; flex-shrink: 0; }
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-weight: 400; letter-spacing: 0.07em;
+      color: var(--cream);
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(245,239,224,0.8);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    /* hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--cream); transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ── Hero ────────────────────────────────── */
+    #hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 7rem 1.5rem 5rem;
+      background-color: var(--green-dark);
+      background-image:
+        radial-gradient(ellipse at 25% 80%, rgba(45,90,63,0.55) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 15%, rgba(45,90,63,0.4) 0%, transparent 45%);
+      position: relative; overflow: hidden;
+    }
+    /* diamond grid */
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        repeating-linear-gradient(45deg,  rgba(201,168,76,0.045) 0, rgba(201,168,76,0.045) 1px, transparent 1px, transparent 14px),
+        repeating-linear-gradient(-45deg, rgba(201,168,76,0.045) 0, rgba(201,168,76,0.045) 1px, transparent 1px, transparent 14px);
+    }
+    .hero-logo {
+      width: clamp(130px, 22vw, 185px);
+      height: auto;
+      border-radius: 50%;
+      margin-bottom: 2rem;
+      animation: fadeDown 0.9s ease both;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 6vw, 3.8rem);
+      font-weight: 400; letter-spacing: 0.07em;
+      color: var(--cream);
+      animation: fadeUp 0.9s ease 0.2s both;
+    }
+    .hero-title {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gold);
+      margin: 0.55rem 0 1.4rem;
+      animation: fadeUp 0.9s ease 0.35s both;
+    }
+    .hero-rule {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 0.9rem;
+      animation: fadeUp 0.9s ease 0.45s both;
+    }
+    .hero-rule::before, .hero-rule::after {
+      content: ''; display: block;
+      width: 55px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .hero-rule::after { background: linear-gradient(to left, transparent, var(--gold)); }
+    .hero-rule-diamond { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); }
+    .hero-loc {
+      font-size: 0.82rem; letter-spacing: 0.12em; color: var(--sage);
+      animation: fadeUp 0.9s ease 0.5s both;
+    }
+    .hero-actions {
+      display: flex; flex-wrap: wrap; gap: 0.9rem;
+      justify-content: center; margin-top: 2.4rem;
+      animation: fadeUp 0.9s ease 0.62s both;
+    }
+    .btn {
+      display: inline-block;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 0.8rem 2.1rem; transition: all 0.22s; cursor: pointer;
+    }
+    .btn-gold  { background: var(--gold);   color: var(--green-dark); border: none; }
+    .btn-gold:hover  { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-ghost { background: transparent; color: var(--cream); border: 1px solid rgba(201,168,76,0.55); }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      color: var(--gold); opacity: 0.6; animation: bounce 2.2s ease infinite;
+    }
+
+    /* ── Section Base ────────────────────────── */
+    section { padding: clamp(3rem, 7vw, 5.5rem) clamp(1.2rem, 4vw, 2rem); }
+    .container { max-width: 880px; margin: 0 auto; }
+    .s-label {
+      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.32em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem;
+    }
+    .s-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-weight: 400; color: var(--green-dark); margin-bottom: 0.8rem;
+    }
+    .s-title.on-dark { color: var(--cream); }
+    .s-rule {
+      display: flex; align-items: center; gap: 0.55rem; margin-bottom: 2.8rem;
+    }
+    .s-rule-line { height: 1px; width: 44px; background: var(--gold); }
+    .s-rule-diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+
+    /* ── About ───────────────────────────────── */
+    #about { background: var(--cream); }
+    .about-inner {
+      display: flex; gap: 3rem; align-items: center;
+    }
+    .about-text-col { flex: 1 1 0; min-width: 0; }
+    .about-photo-col { flex-shrink: 0; }
+    .about-photo {
+      width: 210px; height: 210px;
+      object-fit: cover; object-position: center 15%;
+      border-radius: 50%; border: 2px solid var(--gold);
+      display: block;
+    }
+    .about-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+      line-height: 1.95; font-style: italic; color: var(--text-mid);
+    }
+
+    /* ── Experience ──────────────────────────── */
+    #experience { background: var(--white); }
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-item {
+      padding: 2rem 0 2rem 1.5rem;
+      border-bottom: 1px solid var(--cream-dark);
+      position: relative;
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-item::before {
+      content: ''; position: absolute; left: 0; top: 2rem;
+      width: 2px; height: 0; background: var(--gold);
+      transition: height 0.4s ease;
+    }
+    .exp-item:hover::before { height: calc(100% - 4rem); }
+    .exp-header {
+      display: flex; flex-wrap: wrap; align-items: baseline;
+      gap: 0.25rem 0.9rem; margin-bottom: 0.3rem;
+    }
+    .exp-co {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.22rem; font-weight: 500; color: var(--green-dark);
+    }
+    .exp-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-style: italic; color: var(--gold);
+    }
+    .exp-meta {
+      font-size: 0.67rem; font-weight: 600; letter-spacing: 0.13em;
+      text-transform: uppercase; color: var(--text-light); margin-bottom: 0.75rem;
+    }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .exp-bullets li {
+      font-size: 0.875rem; color: var(--text-mid);
+      line-height: 1.65; padding-left: 1.1rem; position: relative;
+    }
+    .exp-bullets li::before {
+      content: '◆'; position: absolute; left: 0;
+      color: var(--gold); font-size: 0.42rem; top: 0.45em;
+    }
+
+    /* ── Skills ──────────────────────────────── */
+    #skills {
+      background: var(--green-dark); position: relative; overflow: hidden;
+    }
+    #skills::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        repeating-linear-gradient(45deg,  rgba(201,168,76,0.04) 0, rgba(201,168,76,0.04) 1px, transparent 1px, transparent 14px),
+        repeating-linear-gradient(-45deg, rgba(201,168,76,0.04) 0, rgba(201,168,76,0.04) 1px, transparent 1px, transparent 14px);
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 1.25rem; position: relative;
+    }
+    .skill-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.22);
+      padding: 1.4rem 1.6rem;
+      transition: all 0.22s;
+    }
+    .skill-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: var(--gold); transform: translateY(-3px);
+    }
+    .skill-name {
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem;
+    }
+    .skill-desc { font-size: 0.875rem; color: var(--cream-dark); line-height: 1.5; }
+
+    /* ── Education ───────────────────────────── */
+    #education { background: var(--cream); }
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.8rem;
+    }
+    .edu-card {
+      padding: 1.8rem; background: var(--white);
+      border-top: 3px solid var(--gold);
+    }
+    .edu-school {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 500; color: var(--green-dark); margin-bottom: 0.25rem;
+    }
+    .edu-loc {
+      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-light); margin-bottom: 0.2rem;
+    }
+    .edu-dates { font-size: 0.78rem; color: var(--text-light); margin-bottom: 0.55rem; }
+    .edu-field {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-style: italic; color: var(--text-mid);
+    }
+
+    /* ── Interests ───────────────────────────── */
+    #interests { background: var(--white); }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+    .tag {
+      padding: 0.45rem 1.1rem;
+      border: 1px solid var(--cream-dark); background: var(--cream);
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em;
+      color: var(--text-mid); transition: all 0.2s;
+    }
+    .tag:hover { border-color: var(--gold); color: var(--green-dark); background: var(--white); }
+
+    /* ── Footer / Contact ────────────────────── */
+    #contact {
+      background: var(--green-dark); padding: clamp(3rem,6vw,5rem) clamp(1.2rem,4vw,2rem);
+      position: relative; overflow: hidden;
+    }
+    #contact::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        repeating-linear-gradient(45deg,  rgba(201,168,76,0.04) 0, rgba(201,168,76,0.04) 1px, transparent 1px, transparent 14px),
+        repeating-linear-gradient(-45deg, rgba(201,168,76,0.04) 0, rgba(201,168,76,0.04) 1px, transparent 1px, transparent 14px);
+    }
+    .contact-wrap {
+      display: flex; flex-wrap: wrap; gap: 3rem;
+      align-items: flex-start; justify-content: space-between;
+      position: relative;
+    }
+    .contact-brand { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; }
+    .contact-sig {
+      width: 230px;
+      height: auto;
+      display: block;
+    }
+    .contact-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(245,239,224,0.6);
+    }
+    .contact-details { display: flex; flex-direction: column; gap: 0.85rem; }
+    .contact-row { display: flex; align-items: baseline; gap: 0.9rem; }
+    .c-label {
+      font-size: 0.64rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); min-width: 72px;
+    }
+    .c-val { font-size: 0.9rem; color: var(--cream); }
+    .c-val a { color: var(--cream); text-decoration: none; transition: color 0.2s; }
+    .c-val a:hover { color: var(--gold); }
+    .footer-bar {
+      margin-top: 3.5rem; padding-top: 1.4rem;
+      border-top: 1px solid rgba(201,168,76,0.18);
+      text-align: center; position: relative;
+      font-size: 0.7rem; letter-spacing: 0.1em;
+      color: rgba(245,239,224,0.3);
+    }
+
+    /* ── Scroll-reveal ───────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.58s ease, transform 0.58s ease;
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    /* ── Keyframes ───────────────────────────── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── Responsive ──────────────────────────── */
+    @media (max-width: 720px) {
+      nav { padding: 0.8rem 1.2rem; }
+      .nav-links {
+        display: none; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(27,61,40,0.98);
+        border-top: 1px solid rgba(201,168,76,0.18);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li a { display: block; padding: 0.9rem 1.4rem; font-size: 0.72rem; }
+      .hamburger { display: flex; }
+      .exp-item { padding-left: 1rem; }
+      .exp-item::before { display: none; }
+      .contact-wrap { flex-direction: column; align-items: center; text-align: center; }
+      .contact-row { justify-content: center; }
+      .about-inner { flex-direction: column-reverse; align-items: center; }
+      .about-photo { width: 150px; height: 150px; }
+    }
+    @media (max-width: 460px) {
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn { width: 210px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ Navigation ════════════════════════════ -->
+<nav id="navbar" aria-label="Main navigation">
+  <a href="#hero" class="nav-logo">
+    <svg class="nav-badge" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="20" cy="20" r="19.5" fill="#1B3D28"/>
+      <circle cx="20" cy="20" r="17.5" fill="none" stroke="#C9A84C" stroke-width="1"/>
+      <text x="20" y="24.5" text-anchor="middle"
+            font-family="'Cormorant Garamond', Garamond, 'Times New Roman', serif"
+            font-size="14" fill="#7DAA94" font-style="italic">NR</text>
+    </svg>
+    <span class="nav-name">Nicholas Roehm</span>
+  </a>
+
+  <ul class="nav-links" id="nav-links" role="list">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+
+<!-- ═══ Hero ══════════════════════════════════ -->
+<section id="hero" aria-label="Introduction">
+
+  <img src="logo.png" class="hero-logo" alt="NR monogram crest" />
+
+  <h1 class="hero-name">Nicholas (Nick) Roehm</h1>
+  <p class="hero-title">Researcher &amp; Bartender</p>
+
+  <div class="hero-rule" aria-hidden="true">
+    <div class="hero-rule-diamond"></div>
+  </div>
+
+  <p class="hero-loc">Washington, D.C.</p>
+
+  <div class="hero-actions">
+    <a href="#experience" class="btn btn-gold">View Experience</a>
+    <a href="#contact"    class="btn btn-ghost">Get In Touch</a>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+      <polyline points="6,9 12,15 18,9"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ═══ About ═════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <p class="s-label reveal">About</p>
+    <h2 class="s-title reveal">Objective</h2>
+    <div class="s-rule reveal">
+      <div class="s-rule-line"></div>
+      <div class="s-rule-diamond"></div>
+    </div>
+    <div class="about-inner">
+      <div class="about-text-col reveal">
+        <p class="about-quote">
+          Motivated, detail-oriented professional with experience spanning government relations,
+          client services, logistics, and business consulting. Seeking to apply policy analysis,
+          client management, AI integration, and customer-service skills in a dynamic role.
+        </p>
+      </div>
+      <div class="about-photo-col reveal reveal-delay-2">
+        <img src="headshot.jpg" alt="Nicholas Roehm" class="about-photo">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ Experience ════════════════════════════ -->
+<section id="experience">
+  <div class="container">
+    <p class="s-label reveal">Career</p>
+    <h2 class="s-title reveal">Experience</h2>
+    <div class="s-rule reveal">
+      <div class="s-rule-line"></div>
+      <div class="s-rule-diamond"></div>
+    </div>
+
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <span class="exp-co">The Oak Room &amp; Bernadette's</span>
+          <span class="exp-role">Bartender</span>
+        </div>
+        <div class="exp-meta">Washington, D.C. &nbsp;·&nbsp; May 2026 – Present</div>
+        <ul class="exp-bullets">
+          <li>Part of the foundational opening team for Ten-Five Hospitality, developing an intimate, comprehensive knowledge of steakhouse menu ingredients, high-end cuts, and curated wine pairings to deliver flawless service.</li>
+          <li>Executed meticulous daily bar prep and precise high-volume cocktail batching, utilizing advanced design tools to create custom, streamlined batch-bottle labels that optimized bar organization and speed of service.</li>
+          <li>Trained directly under four-time James Beard Award nominee Julian Cox, mastering elite mixology techniques, refined hospitality standards, and high-touch service for high-profile VIPs and discerning guests.</li>
+          <li>Driven, high-energy professional trusted to manage late-night, high-volume shifts while consistently driving revenue through the strategic upselling of premium spirits and reserve wines.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <span class="exp-co">The Bernhardt Group</span>
+          <span class="exp-role">Research Fellow</span>
+        </div>
+        <div class="exp-meta">Washington, D.C. &nbsp;·&nbsp; Nov 2025 – Present</div>
+        <ul class="exp-bullets">
+          <li>Wrote client updates on topics including energy, healthcare, land management, permitting, medical innovations, and government budgeting.</li>
+          <li>Provided high-quality, in-depth research on a wide range of policy issues and presented findings directly to management.</li>
+          <li>Interacted with Congressional offices and staff regarding business matters.</li>
+          <li>Couriered sensitive information when requested.</li>
+          <li>Utilized Claude Code to create AI agents that streamline weekly tasks and daily operations.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <span class="exp-co">Brasserie Liberté</span>
+          <span class="exp-role">Bartender</span>
+        </div>
+        <div class="exp-meta">Washington, D.C. &nbsp;·&nbsp; Jan – May 2026</div>
+        <ul class="exp-bullets">
+          <li>Curated precise wine-to-dish pairings for French tasting menus.</li>
+          <li>Demonstrated sophisticated, friendly service standards while managing high-volume bar operations in a fast-paced, upscale environment.</li>
+          <li>Executed a sophisticated cocktail program featuring classic French-inspired recipes with consistent quality.</li>
+          <li>Gained a comprehensive knowledge of French aperitifs and premium international spirits.</li>
+          <li>Upsold artisanal liqueurs to increase overall beverage revenue.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <span class="exp-co">Brownstein Hyatt Farber Schreck LLP</span>
+          <span class="exp-role">Government Relations Intern</span>
+        </div>
+        <div class="exp-meta">Washington, D.C. &nbsp;·&nbsp; May – Aug 2022</div>
+        <ul class="exp-bullets">
+          <li>Wrote policy briefs and client updates on topics including energy, land management, tax law, scientific innovations, and government budgeting.</li>
+          <li>Monitored Congressional hearings daily and provided executive summaries to policy directors.</li>
+          <li>Conducted legislative research for use in policy briefs presented to clients and internal teams.</li>
+          <li>Produced client updates on US–China relations following a speech by Secretary of State Blinken.</li>
+          <li>Assisted a former Secretary of the Interior with research on permitting processes for governmental projects.</li>
+          <li>Cataloged contact information for Congressional offices to streamline outreach and communication.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <span class="exp-co">Thunder Burger Bar</span>
+          <span class="exp-role">Waiter</span>
+        </div>
+        <div class="exp-meta">Washington, D.C. &nbsp;·&nbsp; Sep – Dec 2021</div>
+        <ul class="exp-bullets">
+          <li>Provided lively, engaging customer interactions in a high-energy restaurant setting.</li>
+          <li>Worked long hours and proved a quick study of restaurant procedure, menu, and policy.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <span class="exp-co">Right Choice Fulfillment</span>
+          <span class="exp-role">Supply Chain Consultant</span>
+        </div>
+        <div class="exp-meta">Shelton, CT &nbsp;·&nbsp; Jan – Jul 2021</div>
+        <ul class="exp-bullets">
+          <li>Managed daily fulfillment operations in a warehouse environment, ensuring timely order processing and shipment.</li>
+          <li>Handled customer inquiries via phone and email, offering solutions to logistics and fulfillment challenges.</li>
+          <li>Created and maintained inventory-tracking spreadsheets for stock management and shipping logistics.</li>
+          <li>Operated forklifts and managed inventory receipt and shipment processes.</li>
+          <li>Developed detailed logistical reports for clients, analyzing operations and suggesting improvements.</li>
+          <li>Created a "how-to" guide for interns and new employees, streamlining onboarding and training.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <span class="exp-co">Waterfront Branded Marketing Solutions</span>
+          <span class="exp-role">Business Consultant</span>
+        </div>
+        <div class="exp-meta">Westport, CT &nbsp;·&nbsp; Feb – Jul 2021</div>
+        <ul class="exp-bullets">
+          <li>Managed client accounts, addressing customer-service issues, financial inquiries, and product-customization requests.</li>
+          <li>Handled personalized-item processing and alternative payment options for clients.</li>
+          <li>Managed financial accounts for clients, ensuring timely payments and financial reporting.</li>
+          <li>Communicated with corporate officers to resolve issues related to stock, finances, and customer satisfaction.</li>
+          <li>Worked closely with team members to ensure smooth operations and successful project outcomes.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <span class="exp-co">Office of Congressman Mike Simpson (ID-02)</span>
+          <span class="exp-role">Intern</span>
+        </div>
+        <div class="exp-meta">Washington, D.C. &nbsp;·&nbsp; May – Jul 2019</div>
+        <ul class="exp-bullets">
+          <li>Scheduled and led tours of historical sites for Idaho constituents visiting Washington, D.C., providing exceptional customer service.</li>
+          <li>Managed front-office operations, including handling constituent correspondence via phone, email, and in-person meetings.</li>
+          <li>Drafted form letters on behalf of the Congressman, covering topics like foreign affairs, healthcare, and tax policy.</li>
+          <li>Attended legislative meetings and hearings, gaining insight into the legislative process and pending bills.</li>
+          <li>Collaborated with other Congressional offices to discuss legislative priorities and development.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ Skills ════════════════════════════════ -->
+<section id="skills">
+  <div class="container">
+    <p class="s-label reveal">Expertise</p>
+    <h2 class="s-title on-dark reveal">Skills</h2>
+    <div class="s-rule reveal">
+      <div class="s-rule-line"></div>
+      <div class="s-rule-diamond"></div>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-name">Research &amp; Analysis</div>
+        <div class="skill-desc">Experienced in gathering, analyzing, and summarizing policy-related information and legislation — from daily Congressional hearing monitoring and executive summaries to in-depth research on energy, healthcare, land management, permitting, and government budgeting.</div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-name">Communication</div>
+        <div class="skill-desc">Skilled in written and verbal communication, including client correspondence and updates, policy briefs, public speaking, and report writing for policy directors, clients, and management.</div>
+      </div>
+      <div class="skill-card reveal reveal-delay-3">
+        <div class="skill-name">Customer Service</div>
+        <div class="skill-desc">Demonstrated ability to engage customers, clients, and constituents professionally in high-pressure environments — from a Congressional front office to high-volume, VIP-facing bar service.</div>
+      </div>
+      <div class="skill-card reveal reveal-delay-4">
+        <div class="skill-name">Project Management</div>
+        <div class="skill-desc">Able to manage multiple tasks and projects at the same time with strong attention to detail, balancing concurrent research portfolios, client deliverables, and opening-team operations.</div>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-name">Office Administration</div>
+        <div class="skill-desc">Proficient in scheduling, handling correspondence, and managing day-to-day office operations, including front-office constituent services on Capitol Hill.</div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-name">Logistics &amp; Supply Chain</div>
+        <div class="skill-desc">Experience in warehouse management, inventory tracking and receipt, forklift operation, shipping operations, and client-facing logistical reporting with recommendations for improvement.</div>
+      </div>
+      <div class="skill-card reveal reveal-delay-3">
+        <div class="skill-name">Technology</div>
+        <div class="skill-desc">Proficient in Microsoft Office Suite (Word, Excel, PowerPoint), Google Suite, third-party logistics (3PL) platforms, and data-analysis tools including AI systems; builds AI agents with Claude Code and holds an introductory knowledge of programming.</div>
+      </div>
+      <div class="skill-card reveal reveal-delay-4">
+        <div class="skill-name">Language</div>
+        <div class="skill-desc">Conversant in reading and writing Spanish, supporting client and constituent communication.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ Education ═════════════════════════════ -->
+<section id="education">
+  <div class="container">
+    <p class="s-label reveal">Academic</p>
+    <h2 class="s-title reveal">Education</h2>
+    <div class="s-rule reveal">
+      <div class="s-rule-line"></div>
+      <div class="s-rule-diamond"></div>
+    </div>
+
+    <div class="edu-grid">
+      <div class="edu-card reveal reveal-delay-1">
+        <div class="edu-school">George Mason University</div>
+        <div class="edu-loc">Fairfax, VA</div>
+        <div class="edu-dates">September 2022 – July 2025</div>
+        <div class="edu-field">Government &amp; International Relations</div>
+      </div>
+      <div class="edu-card reveal reveal-delay-2">
+        <div class="edu-school">The University of Chicago</div>
+        <div class="edu-loc">Chicago, IL</div>
+        <div class="edu-dates">September 2017 – June 2021</div>
+        <div class="edu-field">Public Policy, focus in Policy Writing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ Interests ═════════════════════════════ -->
+<section id="interests">
+  <div class="container">
+    <p class="s-label reveal">Beyond Work</p>
+    <h2 class="s-title reveal">Interests</h2>
+    <div class="s-rule reveal">
+      <div class="s-rule-line"></div>
+      <div class="s-rule-diamond"></div>
+    </div>
+    <div class="tag-cloud reveal">
+      <span class="tag">Emerging Energy Sources</span>
+      <span class="tag">Land Conservation</span>
+      <span class="tag">International Relations</span>
+      <span class="tag">US &amp; World History</span>
+      <span class="tag">Football</span>
+      <span class="tag">TV &amp; Film</span>
+      <span class="tag">Backcountry Backpacking</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ Contact / Footer ══════════════════════ -->
+<footer id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+
+      <div class="contact-brand reveal">
+        <img src="signature-gold.png" alt="Nick Roehm signature" class="contact-sig" />
+        <span class="contact-brand-name">Nicholas (Nick) Roehm</span>
+      </div>
+
+      <div class="contact-details reveal">
+        <div class="contact-row">
+          <span class="c-label">Email</span>
+          <span class="c-val"><a href="mailto:roehm.nick@gmail.com">roehm.nick@gmail.com</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="c-label">Phone</span>
+          <span class="c-val"><a href="tel:+12488855950">(248) 885-5950</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="c-label">Location</span>
+          <span class="c-val">Washington, D.C.</span>
+        </div>
+        <div class="contact-row">
+          <span class="c-label">LinkedIn</span>
+          <span class="c-val"><a href="https://www.linkedin.com/in/nicholas-roehm-a44802131/" target="_blank" rel="noopener noreferrer">nicholas-roehm</a></span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bar">
+      &copy; 2026 Nicholas (Nick) Roehm &nbsp;·&nbsp; Washington, D.C.
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══ Scripts ═══════════════════════════════ -->
+<script>
+  // ── Mobile nav toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('nav-links');
+
+  hamburger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ── Nav shrink on scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.style.padding = window.scrollY > 50
+      ? '0.5rem 2.5rem'
+      : '0.85rem 2.5rem';
+  }, { passive: true });
+
+  // ── Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
